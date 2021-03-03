@@ -12,7 +12,7 @@ import (
 // Decrypt decrypts the contents of the given ciphertext
 // using the given key. Returns plaintext or error.
 func Decrypt(key string, ciphertext []byte) ([]byte, error) {
-	keyBytes, err := util.KeyToBytes(key)
+	keyBytes, err := util.PadZeroes32(key)
 	if err != nil {
 		return nil, err
 	}
@@ -44,7 +44,7 @@ func Decrypt(key string, ciphertext []byte) ([]byte, error) {
 // using the given key. Returns an array of
 // bytes representing the cipher text and an error.
 func Encrypt(key string, plaintext []byte) ([]byte, error) {
-	keyBytes, err := util.KeyToBytes(key)
+	keyBytes, err := util.PadZeroes32(key)
 	if err != nil {
 		return nil, err
 	}
